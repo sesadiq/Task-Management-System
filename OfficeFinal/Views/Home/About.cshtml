@@ -1,0 +1,102 @@
+﻿@model IEnumerable<OfficeFinal.Models.UserTask>
+
+@{
+    ViewBag.Title = "Home Page";
+    int counter = 1;
+}
+
+
+<div class="col-12 col-md-12 col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4>Your Own Created Tasks</h4>
+        </div>
+        <div class="card-body">
+
+            <p>
+                @Html.ActionLink("Create New", "Create","UserTasks", null, new { @class = "btn btn-success icon icon-add-to-list" })
+            </p>
+            <table class="table table-bordered" id="table_id">
+                <thead>
+                    <tr>
+                        <th>NO.</th>
+                        
+                        <th>
+                            @Html.DisplayNameFor(model => model.Message)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CreateDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DeadLine)
+                        </th>
+                        <th>Number of People Involved</th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status.Name)
+                        </th>
+                        <th>@Html.DisplayName("Uploaded File")</th>
+                       <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@(counter++)</td>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Message)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreateDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DeadLine)
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.UserTaskRelations.Count)</td>
+                        <td class="badge badge-pill badge-info mb-xl-4" style="padding:5px">
+                            @Html.DisplayFor(modelItem => item.Status.Name)
+                        </td>
+                        
+                        <td>
+                            @if (item.files != null && item.files != "-1")
+                            {
+                                
+                                    var str = item.files;
+                                    var fileName = str.Substring(24, str.Length - 24);
+                                
+                                <a class="title" style="color:green" href="~/Home/download?d=@fileName">@fileName</a>
+                            }
+                       </td>
+                        
+
+                        <td>
+
+                            @Html.ActionLink("Details", "Details", new { id = item.TaskId })
+
+                        </td>
+
+                    </tr>
+                    }
+                </tbody>
+
+
+            </table>
+
+
+
+        </div>
+    </div>
+
+
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</div>
+
+

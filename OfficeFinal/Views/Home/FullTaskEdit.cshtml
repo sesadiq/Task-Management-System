@@ -1,0 +1,184 @@
+﻿@model OfficeFinal.Models.UserTask
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var i = 1;
+    var j = 1;
+}
+
+<div class="col-12 col-md-12 col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <h4>Your Own Created Tasks</h4>
+        </div>
+        <div class="card-body">
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-responsive-md">
+                        <thead style="color:cornflowerblue">
+                            <tr>
+                                <th>Message</th>
+                                <th>Start Time</th>
+                                <th>DeadLine</th>
+                                <th>File Name</th>
+                                <th>Status</th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    
+
+                                    @*@Html.DisplayFor(model => model.Message)*@
+                                   @Html.Raw(Model.Message)
+                                </td>
+                                <td> @Html.DisplayFor(model => model.CreateDate) </td>
+                                <td> @Html.DisplayFor(model => model.DeadLine) </td>
+                                <td>
+                                    @if (Model.files != null && Model.files != "-1")
+                                    {
+
+                                        var str = Model.files;
+
+                                        var fileName = str.Substring(24, str.Length - 24);
+
+                                        <a class="title" style="color:green" href="~/Home/download?d=@fileName">@fileName</a>
+                                    }
+                                </td>
+                                <td> @Html.DisplayFor(model => model.Status.Name) </td>
+                                <td><button class="btn btn-primary btn-sm">@Html.ActionLink("Edit", "EditTask", "Home", new { id = Model.TaskId, cId = Model.CreatorId }, null)</button></td>
+
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <hr />
+            <hr />
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered mytable table-responsive-md">
+                        <thead style="color: firebrick">
+                            <tr>
+                                <th>No</th>
+                                <th>User Assigned to Task</th>
+                                <th>Delete User</th>
+                                <th><button class="btn btn-success btn-sm">@Html.ActionLink("Assign New User", "AddPeople", "Home", new { id = Model.TaskId }, null)</button></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.usersList != null)
+                            {
+                                foreach (var item in ViewBag.usersList)
+                                {
+                                    <tr>
+                                        <td>@(i++)</td>
+                                        <td>
+                                            <img alt="image" src="~/Content/assets/img/avatar/avatar-3.png" class="rounded-circle" width="35" data-toggle="tooltip" title="@item.AspNetUser.FullName">&nbsp;&nbsp;
+                                            @item.AspNetUser.FullName
+
+                                        </td>
+                                        <td><button class="btn btn-danger btn-sm">@Html.ActionLink("Delete User", "Delete2", "Home", new { id = item.AspNetUser.Id, tId = Model.TaskId }, null)</button></td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+            <hr />
+            <hr />
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-responsive-md">
+                        <thead style="color: firebrick">
+                            <tr>
+                                <th>No: </th>
+                                <th>User Name</th>
+                                <th>Comment</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.comments != null)
+                            {
+                                foreach (var item in ViewBag.comments)
+                                {
+                                    <tr>
+                                        <td>@(j++)</td>
+                                        @foreach (var user in ViewBag.usersList)
+                                        {
+                                            if (user.AspNetUser.Id == item.UserId)
+                                            {
+                                                <td>
+                                                    <img alt="image" src="~/Content/assets/img/avatar/avatar-1.png" class="rounded-circle" width="35" data-toggle="tooltip" title="@user.AspNetUser.FullName">&nbsp;&nbsp;
+                                                    @user.AspNetUser.FullName
+                                                </td>
+
+                                            }
+                                        }
+                                        @*<td>@item.AspNetUser.FullName</td>*@
+                                        <td>@Html.Raw(item.UserComments)</td>
+                                        <td>@item.Status.Name</td>
+                                    </tr>
+
+                                    foreach (var feed in ViewBag.feedbacks)
+                                    {
+                                        if (feed.UserCommentId == item.Id)
+                                        {
+                        <tr style="background-color:aliceblue; height:20px">
+                            <td></td>
+                            <td style="font-size:smaller">@feed.AspNetUser.FullName added feedback</td>
+
+                            <td style="color:cadetblue; font-size:small">@feed.UserFeedback</td>
+                            <td><button class="btn btn-warning btn-sm">@Html.ActionLink("Delete Feedback", "DeleteFeedback", "Feedbacks", new { id = feed.Id , taskId = Model.TaskId}, null)</button></td>
+                        </tr>
+                                        }
+
+                                    }
+
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</div>
+
+
+
+<script>
+    $('#mytable .customerIDCell').each(function () {
+        alert($(this).html());
+    });
+</script>

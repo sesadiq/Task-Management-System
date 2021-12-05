@@ -1,0 +1,51 @@
+﻿@model OfficeFinal.Models.Feedback
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Feedback</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserComment.UserComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserComment.UserComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserFeedback)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserFeedback)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserTaskId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserTaskId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

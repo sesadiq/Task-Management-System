@@ -1,0 +1,111 @@
+﻿@using OfficeFinal.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Login</title>
+
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="~/Content/assets/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/assets/modules/fontawesome/css/all.min.css">
+
+    <!-- CSS Libraries -->
+    <link rel="stylesheet" href="~/Content/assets/modules/bootstrap-social/bootstrap-social.css">
+
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="~/Content/assets/css/style.css">
+    <link rel="stylesheet" href="~/Content/assets/css/components.css">
+</head>
+
+<body>
+    <div id="app">
+        <section class="section">
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-12 col-sm-8 offset-sm-2 col-md-10 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+                        <div class="login-brand">
+                            <img src="~/Content/assets/img/nsclogo.png" alt="logo" width="80" class="shadow-light rounded-circle"><h4 class="mt-3 mb-0"> NSC Office </h4>
+                        </div>
+
+                        <div class="card card-primary">
+                            <div class="card-header"><h4>Login</h4></div>
+
+                            <div class="card-body">
+
+                                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <hr />
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="control-label">Password</label>
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <div class="checkbox">
+                                                @Html.CheckBoxFor(m => m.RememberMe)
+                                                @Html.LabelFor(m => m.RememberMe)
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Log in" class="btn btn-default" />
+                                        </div>
+                                    </div>
+
+                                    @* Enable this once you have account confirmation enabled for password reset functionality
+                                        <p>
+                                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                        </p>*@
+                                }
+
+                            </div>
+                        </div>
+                        <div class="mt-5 text-muted text-center">
+                            Don't have an account? <a href="auth-register.html">Contact NSC IT</a>
+                        </div>
+                        <div class="simple-footer">
+                            Copyright &copy; NSC Office 2020
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- General JS Scripts -->
+    <script src="~/Content/assets/modules/jquery.min.js"></script>
+    <script src="~/Content/assets/modules/popper.js"></script>
+    <script src="~/Content/assets/modules/tooltip.js"></script>
+    <script src="~/Content/assets/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="~/Content/assets/modules/moment.min.js"></script>
+    <script src="~/Content/assets/js/more.js"></script>
+
+    <!-- JS Libraies -->
+    <!-- Page Specific JS File -->
+    <!-- Template JS File -->
+    <script src="~/Content/assets/js/scripts.js"></script>
+    <script src="~/Content/assets/js/custom.js"></script>
+</body>
+</html>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

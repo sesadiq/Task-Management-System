@@ -1,0 +1,164 @@
+﻿@model OfficeFinal.Models.UserTaskRelation
+
+@{
+    ViewBag.Title = "Create";
+    var i = 1;
+}
+
+
+
+@*<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>*@
+
+@*<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />*@
+
+<script src="~/Content/assets/select-search-better-dropdown/scripts/BetterDropdown/jquery.betterdropdown.js"></script>
+<link href="~/Content/assets/select-search-better-dropdown/style/BetterDropdown/jquery.betterdropdown.css" rel="stylesheet" />
+
+
+
+<div class="col-12 col-md-6 col-lg-6" style="margin:0 auto">
+    <div class="card">
+        <div class="card-header">
+            <h4>User Tasks</h4>
+        </div>
+        <div class="card-body">
+
+
+            @using (Html.BeginForm("addPeople", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <h4>UserTaskRelation</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TaskId, "Select Task", htmlAttributes: new { @class = "control-label col-md-4 " })
+                        <div class="col-md-8">
+                            @*@Html.DropDownList("TaskId", null, htmlAttributes: new { @class = "form-control", id = "taskId" })*@
+                            @Html.DropDownList("TaskId", null, htmlAttributes: new { @class = "form-control", id = "taskId" })
+
+                            @Html.ValidationMessageFor(model => model.TaskId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserId, "Select User", htmlAttributes: new { @class = "control-label col-md-4 " })
+                        <div class="col-md-8">
+                            @*@Html.DropDownList("UserId", null, htmlAttributes: new { @class = "form-control", id = "better-dropdown-example" })*@
+                            @Html.DropDownList("UserId", null, "-- Select User --", htmlAttributes: new { @class = "form-control", id = "better-dropdown-example" })
+                            @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            @*<input type="submit" value="Add User" class="btn btn-default" />*@
+                            @*<button class="btn btn-primary pull-right"><a href="@Url.Action("Index","UserTasks")">Save and Assign</a></button>*@
+                            <button class="btn btn-primary"><a href="/Home/FullTaskEdit/@ViewData["id"]">Save and Assign</a></button>
+
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+
+
+
+            <div class="row">
+                <div class="col-md-10">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>User Assigned to Task</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.usersList != null)
+                            {
+                                foreach (var item in ViewBag.usersList)
+                                {
+                                    <tr>
+                                        <td>@(i++)</td>
+                                        <td>@item.AspNetUser.FullName</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            @*<div>
+
+                    @Html.ActionLink("Back to List", "Index")
+                </div>*@
+
+
+        </div>
+    </div>
+
+
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</div>
+
+<script src="~/Content/assets/modules/modules-sweetalert.js"></script>
+<script src="~/Content/assets/modules/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#better-dropdown-example').betterDropdown();
+
+
+    });
+</script>
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#better-dropdown-example').on('change', function () {
+            swal('Adding User & Sending Email Wait!', {
+                buttons: false,
+                timer: 6000,
+            });
+            var UserId = this.value;
+            var taskId = document.getElementById("taskId").value;
+
+            $.ajax({
+                type: "POST",
+                url: '/UserTaskRelations/addPeopleJson', // do not hard code your url's
+                data: { userID: UserId, taskID: taskId },
+                datatype: "json", // refer notes below
+                success: function (data) {
+
+
+
+                    setInterval('location.reload()', 500);
+                    $('#result').append('<li>' + data + '</li>')
+                }
+                //append('<li><a href="#">New list item</a></li>');
+            });
+        });
+    });
+</script>
+
+
+
+
+

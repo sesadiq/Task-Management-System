@@ -1,0 +1,86 @@
+﻿@model IEnumerable<OfficeFinal.Models.UserTask>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="col-12 col-md-12 col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Your Own Created Tasks</h4>
+            </div>
+            <div class="card-body">
+
+
+                <p>
+                    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success icon icon-add-to-list" })
+                </p>
+                <table class="table" id="table_id">
+                    <thead>
+                        <tr>
+                            
+                            <th>
+                                @Html.DisplayName("Created By")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Status")
+                            </th>
+                            <th>
+                                @Html.DisplayName("Task Description")
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CreateDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DeadLine)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Message)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CreateDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DeadLine)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.TaskId }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.TaskId }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.TaskId })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                   
+
+                </table>
+
+
+
+            </div>
+        </div>
+
+
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+    </div>
+
+

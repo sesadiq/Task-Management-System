@@ -1,0 +1,438 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>NSC Office</title>
+    <link rel="stylesheet" href="~/Content/assets/modules/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/assets/modules/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/assets/fonts/line-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/assets/css/style.css">
+    <link rel="stylesheet" href="~/Content/assets/css/components.css">
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/css/bootstrap-select.min.css" />*@
+    <link href="~/Content/assets/DataTables/datatables.css" rel="stylesheet" />
+    <script src="~/Content/assets/modules/jquery.min.js"></script>
+    <script src="~/Content/assets/modules/popper.js"></script>
+    <script src="~/Content/assets/modules/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/modules/moment.min.js"></script>
+    <link href="~/Content/assets/css/dropzone.css" rel="stylesheet" />
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="googlebot" content="noindex,nofollow">
+
+</head>
+
+
+<body class="">
+    <div id="app">
+        <div class="main-wrapper main-wrapper-1">
+
+            <nav class="navbar navbar-expand-lg main-navbar bg-transparent  navbar-dark" id="navbar">
+                <form class="form-inline mr-auto">
+                    <ul class="navbar-nav mr-3">
+                        <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="la la-bars"></i></a></li>
+                        <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+                    </ul>
+                    <div class="search-element">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+                        <button class="btn" type="submit"><i class="la la-search"></i></button>
+                        <div class="search-backdrop"></div>
+                        @*<div class="search-result">
+                                <div class="search-header">
+                                    Histories
+                                </div>
+                                <div class="search-item">
+                                    <a href="#">How to hack NASA using CSS</a>
+                                    <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+                                </div>
+                                <div class="search-item">
+                                    <a href="#">Kodinger.com</a>
+                                    <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+                                </div>
+                                <div class="search-item">
+                                    <a href="#">#Papermint</a>
+                                    <a href="#" class="search-close"><i class="fas fa-times"></i></a>
+                                </div>
+                                <div class="search-header">
+                                    Result
+                                </div>
+                                <div class="search-item">
+                                    <a href="#">
+                                        <img class="mr-3 rounded" width="30" src="~/Content/assets/img/products/product-3-50.png" alt="product">
+                                        oPhone S9 Limited Edition
+                                    </a>
+                                </div>
+                                <div class="search-item">
+                                    <a href="#">
+                                        <img class="mr-3 rounded" width="30" src="~/Content/assets/img/products/product-2-50.png" alt="product">
+                                        Drone X2 New Gen-7
+                                    </a>
+                                </div>
+                                <div class="search-item">
+                                    <a href="#">
+                                        <img class="mr-3 rounded" width="30" src="~/Content/assets/img/products/product-1-50.png" alt="product">
+                                        Headphone Blitz
+                                    </a>
+                                </div>
+                                <div class="search-header">
+                                    Projects
+                                </div>
+                                <div class="search-item">
+                                    <a href="#">
+                                        <div class="search-icon bg-danger text-white mr-3">
+                                            <i class="fas fa-code"></i>
+                                        </div>
+                                        Papermint Admin Template
+                                    </a>
+                                </div>
+                                <div class="search-item">
+                                    <a href="#">
+                                        <div class="search-icon bg-danger text-white mr-3">
+                                            <i class="fas fa-laptop"></i>
+                                        </div>
+                                        Create a new Homepage Design
+                                    </a>
+                                </div>
+                            </div>*@
+                    </div>
+                </form>
+                <ul class="navbar-nav navbar-right">
+                    @*<li class="dropdown dropdown-list-toggle">
+                            <a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep beep-warning"><i class="la la-envelope"></i></a>
+                            <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                                <div class="dropdown-header">
+                                    Messages
+                                    <div class="float-right">
+                                        <a href="#">Mark All As Read</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown-list-content dropdown-list-message">
+                                    <a href="#" class="dropdown-item dropdown-item-unread">
+                                        <div class="dropdown-item-avatar">
+                                            <img alt="image" src="~/Content/assets/img/avatar/avatar-1.png" class="rounded-circle">
+                                            <div class="is-online"></div>
+                                        </div>
+                                        <div class="dropdown-item-desc">
+                                            <b>Kusnaedi</b>
+                                            <p>Hello, Bro!</p>
+                                            <div class="time">10 Hours Ago</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="dropdown-item dropdown-item-unread">
+                                        <div class="dropdown-item-avatar">
+                                            <img alt="image" src="~/Content/assets/img/avatar/avatar-2.png" class="rounded-circle">
+                                        </div>
+                                        <div class="dropdown-item-desc">
+                                            <b>Dedik Sugiharto</b>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                            <div class="time">12 Hours Ago</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="dropdown-item dropdown-item-unread">
+                                        <div class="dropdown-item-avatar">
+                                            <img alt="image" src="~/Content/assets/img/avatar/avatar-3.png" class="rounded-circle">
+                                            <div class="is-online"></div>
+                                        </div>
+                                        <div class="dropdown-item-desc">
+                                            <b>Agung Ardiansyah</b>
+                                            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                            <div class="time">12 Hours Ago</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <div class="dropdown-item-avatar">
+                                            <img alt="image" src="~/Content/assets/img/avatar/avatar-4.png" class="rounded-circle">
+                                        </div>
+                                        <div class="dropdown-item-desc">
+                                            <b>Ardian Rahardiansyah</b>
+                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit ess</p>
+                                            <div class="time">16 Hours Ago</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <div class="dropdown-item-avatar">
+                                            <img alt="image" src="~/Content/assets/img/avatar/avatar-5.png" class="rounded-circle">
+                                        </div>
+                                        <div class="dropdown-item-desc">
+                                            <b>Alfa Zulkarnain</b>
+                                            <p>Exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                                            <div class="time">Yesterday</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="dropdown-footer text-center">
+                                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                        </li>*@
+                    @*<li class="dropdown dropdown-list-toggle">
+                            <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep  beep-warning">
+                                <i class="la la-bell"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                                <div class="dropdown-header">
+                                    Notifications
+                                    <div class="float-right">
+                                        <a href="#">Mark All As Read</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown-list-content dropdown-list-icons">
+                                    <a href="#" class="dropdown-item dropdown-item-unread">
+                                        <div class="dropdown-item-icon bg-danger text-white">
+                                            <i class="fas fa-code"></i>
+                                        </div>
+                                        <div class="dropdown-item-desc">
+                                            Template update is available now!
+                                            <div class="time text-primary">2 Min Ago</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <div class="dropdown-item-icon bg-info text-white">
+                                            <i class="far fa-user"></i>
+                                        </div>
+                                        <div class="dropdown-item-desc">
+                                            <b>You</b> and <b>Dedik Sugiharto</b> are now friends
+                                            <div class="time">10 Hours Ago</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <div class="dropdown-item-icon bg-success text-white">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="dropdown-item-desc">
+                                            <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
+                                            <div class="time">12 Hours Ago</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <div class="dropdown-item-icon bg-danger text-white">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </div>
+                                        <div class="dropdown-item-desc">
+                                            Low disk space. Let's clean it!
+                                            <div class="time">17 Hours Ago</div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="dropdown-item">
+                                        <div class="dropdown-item-icon bg-info text-white">
+                                            <i class="fas fa-bell"></i>
+                                        </div>
+                                        <div class="dropdown-item-desc">
+                                            Welcome to Papermint template!
+                                            <div class="time">Yesterday</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="dropdown-footer text-center">
+                                    <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                                </div>
+                            </div>
+                        </li>*@
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                            <img alt="image" src="~/Content/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
+                            <div class="d-sm-none d-lg-inline-block">Hi, @User.Identity.Name</div>
+                        </a>
+                        @if (Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-title">Logged in 5 min ago</div>
+                                    <a href="@Url.Action("ChangePassword","Manage")" class="dropdown-item has-icon">
+                                        <i class="far fa-user"></i>Change Password
+
+                                    </a>
+
+
+                                    <div class="dropdown-divider"></div>
+                                    <a href="javascript:document.getElementById('logoutForm').submit()" class="dropdown-item has-icon text-danger">
+                                        <i class="fas fa-sign-out-alt"></i> Logout
+                                    </a>
+                                </div>
+                            }
+                        }
+
+                    </li>
+                </ul>
+            </nav>
+
+
+
+            <div class="navbar-bg" id="navbarbg">
+
+            </div>
+            <div class="main-sidebar   ">
+                <aside id="sidebar-wrapper">
+                    <div class="sidebar-brand bg-white brand-left text-overflow" id="brand" align="left">
+                        <a href="@Url.Action("Index","Home")"><img src="~/Content/assets/img/nsclogo.png" class="logo-brand" /> <span> NSC Office</span>  </a>
+                    </div>
+                    <div class="sidebar-brand sidebar-brand-sm">
+                        <a href="@Url.Action("Index","Home")">NSC</a>
+                    </div>
+
+                    <ul class="sidebar-menu">
+                        <li class="">
+                            <a href="@Url.Action("Index","Home")" class="nav-link active"><i class="la la-dashboard"></i><span>Dashboard</span></a>
+
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown"><i class="la la-bars"></i><span>Tasks</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="@Url.Action("Create", "UserTasks")">Add Task</a></li>
+                                <li><a class="nav-link" href="@Url.Action("About","Home")">My Assigned Task</a></li>
+                                <li><a class="nav-link" href="#">Finished Tasks</a></li>
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
+
+                </aside>
+            </div>
+            @*<div class="side-right" id="sideright">
+                    <div class="side-right-absolute-left">
+                        <div class="side-right-left">
+                            <div class="">
+                                <a href="javascript:void(0);" onclick="side_right();" class="btn btn-secondary  btn-lg wx-60  message-toggle beep beep-warning">
+                                    <h3 class="m-0  "> <i class="la la-gear  ">  </i></h3>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="side-right-header">
+                        <h6 class="mb-0"> Settings Themes</h6>
+                    </div>
+
+                    <div class="p-3 side-right-body">
+                        <p class="fs-18"> Header Theme </p>
+                        <div class="row m-n1">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-white shadow-md w-100" onclick="header_theme('navbarbg-white');"> </a> </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-primary w-100" onclick="header_theme('navbarbg-primary');"> </a> </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-success w-100" onclick="header_theme('navbarbg-success');"> </a> </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-info w-100" onclick="header_theme('navbarbg-info');"> </a> </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-warning w-100" onclick="header_theme('navbarbg-warning');"> </a> </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-dark w-100" onclick="header_theme('navbarbg-dark');"> </a> </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-white shadow-md w-100" onclick="header_theme('navbarbg-white');"> </a> </div>
+                        </div>
+                        <br />
+
+                        <p class="fs-18"> Brand Background </p>
+                        <div class="row m-n1">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-primary w-100" onclick="brand_theme('bg-primary');"> </a> </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-success w-100" onclick="brand_theme('bg-success');"> </a> </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-info w-100" onclick="brand_theme('bg-info');"> </a> </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-warning w-100" onclick="brand_theme('bg-warning');"> </a> </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-dark w-100" onclick="brand_theme('bg-dark');"> </a> </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-white shadow-md w-100" onclick="brand_theme('bg-white');"> </a> </div>
+                        </div>
+                        <br />
+                        <p class="fs-18"> Sidebar Style </p>
+                        <div class="row m-n1">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-white shadow-md w-100" onclick="bg_sidebar('');"> </a> </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1">
+                                <div class="main-bg-image"><a class="style-card transparent-dark w-100" onclick="bg_sidebar('tr-dark');"> </a></div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1">
+                                <div class="main-bg-image"><a class="style-card transparent-primary w-100" onclick="bg_sidebar('tr-primary');"> </a></div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1">
+                                <div class="main-bg-image"><a class="style-card transparent-success w-100" onclick="bg_sidebar('tr-success');"> </a></div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1">
+                                <div class="main-bg-image"><a class="style-card transparent-info w-100" onclick="bg_sidebar('tr-info');"> </a></div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1">
+                                <div class="main-bg-image"><a class="style-card transparent-danger w-100" onclick="bg_sidebar('tr-danger');"> </a></div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1">
+                                <div class="main-bg-image"><a class="style-card transparent-warning w-100" onclick="bg_sidebar('tr-warning');"> </a></div>
+                            </div>
+                        </div>
+                        <br />
+
+
+
+                        <p class="fs-18"> Paper Style </p>
+                        <div class="row m-n1">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1 paper"> <a class="style-card bg-primary w-100 d-flex justify-content-center align-items-center " onclick="paper('paper');"> Paper </a> </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4 p-1"> <a class="style-card bg-primary w-100  d-flex justify-content-center align-items-center" onclick="paper('');"> Normal </a> </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>*@
+
+
+
+            <div class="main-content">
+
+
+
+                <link rel="stylesheet" href="~/Content/assets/modules/jqvmap/dist/jqvmap.min.css">
+                <link rel="stylesheet" href="~/Content/assets/modules/weather-icon/css/weather-icons.min.css">
+                <link rel="stylesheet" href="~/Content/assets/modules/weather-icon/css/weather-icons-wind.min.css">
+                <link rel="stylesheet" href="~/Content/assets/modules/summernote/summernote-bs4.css">
+                <link href="~/Content/assets/modules/summernote/summernote-bs4.css" rel="stylesheet" />
+
+
+                @RenderBody()
+
+
+                <!-- JS Libraies -->
+                <script src="~/Content/assets/modules/simple-weather/jquery.simpleWeather.min.js"></script>
+                <script src="~/Content/assets/modules/chart.min.js"></script>
+                <script src="~/Content/assets/modules/jqvmap/dist/jquery.vmap.min.js"></script>
+                <script src="~/Content/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+                <script src="~/Content/assets/modules/summernote/summernote-bs4.js"></script>
+                <script src="~/Content/assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
+                <!-- Page Specific JS File -->
+                <script src="~/Content/assets/js/page/index-0.js"></script>
+
+
+
+            </div>
+            <footer class="main-footer">
+                <div class="footer-left">
+                    Copyright &copy; 2020
+                    <div class="bullet"></div> NSC Office
+                </div>
+                <div class="boot">
+
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+
+    <script src="~/Content/assets/js/dropzone.js"></script>
+    <script src="~/Content/assets/modules/tooltip.js"></script>
+    <script src="~/Content/assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="~/Content/assets/js/more.js"></script>
+    <script src="~/Content/assets/js/scripts.js"></script>
+    <script src="~/Content/assets/js/custom.js"></script>
+    <script src="~/Content/assets/modules/select2.full.min.js"></script>
+    <script src="~/Content/assets/modules/forms-advanced-forms.js"></script>
+    <script src="~/Content/assets/modules/jquery.selectric.min.js"></script>
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/js/bootstrap-select.min.js"></script>*@
+
+    <script src="~/Content/assets/DataTables/datatables.js"></script>
+    <script src="~/Content/assets/modules/datepicker.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>
+
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>
+

@@ -1,0 +1,163 @@
+﻿@model OfficeFinal.Models.UserComment
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var j = 1;
+}
+<div class="col-12 col-md-6 col-lg-6" style="margin:0 auto">
+    <div class="card">
+        <div class="card-header">
+            <h4>Add Comment to your task</h4>
+        </div>
+        <div class="card-body">
+
+            @using (Html.BeginForm("Create", "UserComments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.UserComments, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <textarea class="form-control" name="UserComments" id="exampleFormControlTextarea1" rows="10"></textarea>
+                            @*<textarea class="summernote-simple" id="UserComments" name="UserComments"></textarea>*@
+                            @*@Html.EditorFor(model => model.UserComments, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.UserComments, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display: none">
+                        @Html.LabelFor(model => model.TaskId, "TaskId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("TaskId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TaskId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display:none">
+                        @Html.Label("User Id")
+                        <div class="col-md-10">
+                            @Html.DropDownList("UserId", null, htmlAttributes: new { @class = "form-control" })
+                            @*@Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StatusId, "StatusId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("StatusId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.StatusId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <input type="file" name="file" multiple="multiple" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+    <hr />
+
+</div>
+<div class="card">
+    <div class="card-header">
+        <h4>Assigned People Commented on this Task</h4>
+    </div>
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-xs-12 col-md-12 col-lg-12">
+                <table class="table table-bordered">
+                    <thead style="color: firebrick">
+                        <tr>
+                            <th>No: </th>
+                            <th>User Name</th>
+                            <th>User Comment</th>
+                            <th>File Added</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @if (ViewBag.comments != null)
+                        {
+                            foreach (var item in ViewBag.comments)
+                            {
+                                <tr>
+                                    <td>@(j++)</td>
+                                    @foreach (var user in ViewBag.usersList)
+                                    {
+                                        if (user.AspNetUser.Id == item.UserId)
+                                        {
+                                            if (user.AspNetUser.Email == User.Identity.Name)
+                                            {
+                                                <td>You</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@user.AspNetUser.FullName</td>
+                                            }
+
+
+                                        }
+                                    }
+                                    <td>
+                                        @Html.Raw(item.UserComments)
+                                        @*@item.UserComments*@
+                                    </td>
+                                    <td>
+                                        @if (item.file != null && item.file != "-1")
+                                        {
+
+                                            var str = item.file;
+
+                                            var fileName = str.Substring(24, str.Length - 24);
+
+                                            <a class="title" style="color:green" href="~/Home/download?d=@fileName">@fileName</a>
+                                        }
+                                    </td>
+                                    <td>@item.Status.Name</td>
+                                </tr>
+                                foreach (var feed in ViewBag.feedbacks)
+                                {
+                                    if (feed.UserCommentId == item.Id)
+                                    {
+                                        <tr style="background-color:aliceblue; height:20px">
+                                            <td></td>
+                                            <td></td>
+                                            <td style="font-size:smaller">@feed.AspNetUser.FullName added feedback</td>
+
+                                            <td style="color:cadetblue; font-size:small">@feed.UserFeedback</td>
+                                        </tr>
+                                    }
+
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</div>
